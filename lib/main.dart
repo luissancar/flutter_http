@@ -18,7 +18,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final url =
       //    "http://iesayala.ddns.net/json/jsonguitarras2.php"; // debe ser https
-      "https://jsonplaceholder.typicode.com/posts";
+      "https://api.github.com/users";
 
   var _postJson = []; //variable gloval
 
@@ -38,7 +38,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     fetchPosts();
   }
@@ -51,7 +50,7 @@ class _MyAppState extends State<MyApp> {
             itemCount: _postJson.length,
             itemBuilder: (context, i) {
               final post = _postJson[i];
-              return Text("${post["title"]}\n");
+              return Image.network(post["avatar_url"]);
             }),
       ),
     );
